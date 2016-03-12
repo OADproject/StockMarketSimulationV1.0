@@ -35,7 +35,7 @@ public class Market extends Thread {
 
 
     private void init() {
-       // createStocks(StockType.values());
+        //createStocks(StockType.values());
        // createStockTrendMap();
         //addDummyCurrentValues();
         start();
@@ -297,7 +297,7 @@ public class Market extends Thread {
         stocks.add(new Stock("facebook",100,100));
         List<TransactionHistory> histories = new ArrayList<>();
         Portfolio p = new Portfolio(balance,stocks,histories);
-        User nu = new User(" "," "," "," ",p,authentication);
+        User nu = new User(authentication.getUsername(),"12345678","park central","6692426926",p,authentication);
 
         return nu;
     }
@@ -351,6 +351,119 @@ public class Market extends Thread {
         sb.append(",balance:" + user.getPortfolio().getMoneyBalance());
         return sb.toString();
     }
+    
+    
+    public String requestMarketUpdate(String username)
+    {
+        String result ="";
+        for(Stock s: globalStocks)
+        {
+            result = result.concat(s.getStockName()+","+s.getUnitPrice()+";");
+        }
+        result = result.concat("#");
+        
+        /*
+        Create User Data String Below
+        */
+        
+        User u = null;
+        
+        for(Integer i: allUsersTable.keySet())
+        {
+            if(allUsersTable.get(i).getAuth().getUsername().equals(username))
+            {
+                u = allUsersTable.get(i);
+                break;
+            }
+        }
+        String userData = "";
+        Portfolio p = u.getPortfolio();
+        Authentication a = u.getAuth();
+        
+        userData = userData.concat(userToString(u));
+        userData = userData.concat(portfolioToString(p));
+        userData = userData.concat(authToString(a));
+        result = result.concat(userData);
+        return result;
+    }
+    public String userToString(User u)
+    {
+        String userData = "";
+        userData = userData.concat(u.getName()+","+u.getSSN()+","+u.getAddress()+","+u.getPhoneNumber()+"#");
+        return userData;  
+    }
+    public String portfolioToString(Portfolio p)
+    {
+        String userData ="";
+        userData = userData.concat(p.getMoneyBalance()+",{");
+        userData = userData.concat(stockListToString(p.getStocks()));
+        userData = userData.concat("}#");
+        return userData;
+    }
+    public String stockListToString(List<Stock> userStocks)
+    {
+        String userData = ";";
+        for(Stock s: userStocks)
+        {
+            userData = userData.concat(s.getStockName()+":"+s.getStockQty()+";");
+        }
+        return userData;
+    }
+    public String authToString(Authentication a)
+    {
+        String userData = "";
+        userData = userData.concat(a.getUsername()+","+a.getPassword()+"#");
+        return userData;
+    }
+    
+    ////////////////////////////////////////////////////////////////////
+    ///////////////////////////////ENCODE///////////////////////////////
+    public List<Stock> stringToMarket(String data)
+    {
+        List<Stock> marketStocks = new ArrayList<Stock>();
+        String[] arr = data.split("#");
+        String[] stocks = arr[0].split(";");
+        
+        for(String s: stocks)
+        {
+            String[] values = s.split(",");
+            Stock stk = new Stock(values[0],Double.parseDouble(values[1]),0);
+            marketStocks.add(stk);
+        }
+        return marketStocks;
+    }    public User stringToUser(String data)
+
+    {
+        String[] fields = data.split("#");
+        String[] auth = fields[3].split(",");
+        Authentication a = new Authentication(auth[0],auth[1]);
+        
+        String[] port = fields[2].split(",");
+        double moneyBalance = Double.parseDouble(port[0]);
+        port[1] = port[1].replace("{","");
+        port[1] = port[1].replace("}","");
+        String[] stocks = port[1].split(";");
+        List<Stock> portStocks = new ArrayList<Stock>();
+        for(String s: stocks)
+        {
+            if(s.equals("") == false)
+            {            
+            String[] val = s.split(":");
+            Stock ob = new Stock(val[0],0,Integer.parseInt(val[1]));
+            portStocks.add(ob);
+            }
+        }
+        List<TransactionHistory> t = new ArrayList<TransactionHistory>();
+        Portfolio p = new Portfolio(moneyBalance,portStocks,t);
+        
+        String[] userFields = fields[1].split(",");
+        User u = new User(userFields[0],userFields[1],userFields[2],userFields[3],p,a);
+        return u;
+        
+    }
+   
+    
+    
 
 
 //    public static void main(String[] args) {
@@ -360,8 +473,9 @@ public class Market extends Thread {
 //        //m.addSellRequest(new BuySell(StockType.AMAZON.toString(),1,"sun",100, 100, false));
 //        //m.matchOrders();
 //       // m.updateStockValues();
-//       // m.evaluateCurrentMarketValue();
-//
+//       // m.evaluateCurrentMarketValue();;
+//        m.addStock("google",150,12);
+//        m.addStock("facebook",200,12);
 //
 //            User u1 =  m.returnUser(new Authentication("surag","surag"));
 //            User u2 =  m.returnUser(new Authentication("prateek","surag"));
@@ -369,24 +483,21 @@ public class Market extends Thread {
 //            m.addUser(u1);
 //            m.addUser(u2);
 //            m.addUser(u3);
-//            System.out.println(m.getUserList().size());
-//            System.out.println(m.globalStocks.size());
-//            System.out.println("created objects");
-//
-//            Logger logger = new Logger();
+//            String reqStr = m.requestMarketUpdate(u1.getAuth().getUsername());
+//            System.out.println(reqStr);
+//            List<Stock> markStock = m.stringToMarket(reqStr);
+//            
+//            
+//            List<Stock> markStocks = m.stringToMarket(reqStr);
+//            for(Stock s: markStocks)
+//            {
+//                System.out.println("Stock Name: "+s.getStockName()+","+"Stock price: "+s.getUnitPrice());
+//            }
+//            
+//            
 //
 //            while (true){
-//                try {
-//                    System.out.println("calling logging");
-//                    logger.updateLogs(m.getUserList(),m);
-//                    Thread.sleep(5000);
-////                    logger.updateMarketLogs(m);
-////                    logger.updateUserLogs();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
+//                
 //            }
 //
 //    }
