@@ -42,11 +42,16 @@ public class MarketStart extends Application {
 		Parent root =  (Parent)fxmlLoader.load(); 
 		
 		FXMLDocumentController controller = fxmlLoader.<FXMLDocumentController>getController();
+                controller.start();
 		
 		Scene scene = new Scene(root);
         
         stage.setScene(scene);
         stage.setTitle("Stock Market Admin Control Panel");
+        Market temp = Market.getMarket();
+        temp.addStock("amazon", 100, 0);
+        temp.addStock("facebook",100, 0);
+        temp.addStock("google",100,0);
         stage.show();
 		
 	}

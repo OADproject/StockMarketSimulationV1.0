@@ -106,9 +106,10 @@
                      <children>
                         <Pane prefHeight="542.0" prefWidth="806.0">
                            <children>
-                              <TextArea fx:id="currentMarketStockPricesArea" layoutX="62.0" layoutY="42.0" prefHeight="215.0" prefWidth="692.0" />
+                              <Pane layoutX="62.0" layoutY="42.0" prefHeight="215.0" prefWidth="692.0" style="-fx-background-color: black;" />
+                              <TextArea fx:id="currentMarketStockPricesArea" layoutX="62.0" layoutY="42.0" prefHeight="215.0" prefWidth="692.0" stylesheets="@txtArea.css" />
                               <Label layoutX="62.0" layoutY="25.0" text="Current Market Pricings:" />
-                              <Button fx:id="viewMarketStatusButton" layoutX="62.0" layoutY="271.0" mnemonicParsing="false" onAction="#updateMarket" text="View Market Status" />
+                              <Button fx:id="viewMarketStatusButton" layoutX="62.0" layoutY="271.0" mnemonicParsing="false" text="View Market Status" />
                               <Button fx:id="startMarketButton" layoutX="277.0" layoutY="407.0" mnemonicParsing="false" onAction="#startMarket" text="Start Market" />
                               <Button fx:id="stopMarketButton" layoutX="378.0" layoutY="407.0" mnemonicParsing="false" onAction="#stopMarket" text="Stop Market" />
                            </children></Pane>
