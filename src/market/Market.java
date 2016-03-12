@@ -431,8 +431,8 @@ public class Market extends Thread {
             marketStocks.add(stk);
         }
         return marketStocks;
-    }    public User stringToUser(String data)
-
+    }   
+    public User stringToUser(String data)
     {
         String[] fields = data.split("#");
         String[] auth = fields[3].split(",");
