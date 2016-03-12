@@ -358,7 +358,8 @@ public class Market extends Thread {
         String result ="";
         for(Stock s: globalStocks)
         {
-            result = result.concat(s.getStockName()+","+s.getUnitPrice()+";");
+            String unitPrice = String.format("%.2f",s.getUnitPrice());
+            result = result.concat(s.getStockName()+","+unitPrice+";");
         }
         result = result.concat("#");
         
@@ -395,7 +396,8 @@ public class Market extends Thread {
     public String portfolioToString(Portfolio p)
     {
         String userData ="";
-        userData = userData.concat(p.getMoneyBalance()+",{");
+        String moneyBal = String.format("%.2f",p.getMoneyBalance());
+        userData = userData.concat(moneyBal+",{");
         userData = userData.concat(stockListToString(p.getStocks()));
         userData = userData.concat("}#");
         return userData;
@@ -431,8 +433,8 @@ public class Market extends Thread {
             marketStocks.add(stk);
         }
         return marketStocks;
-    }   
-    public User stringToUser(String data)
+    }    public User stringToUser(String data)
+
     {
         String[] fields = data.split("#");
         String[] auth = fields[3].split(",");
@@ -466,39 +468,39 @@ public class Market extends Thread {
     
 
 
-//    public static void main(String[] args) {
-//        Market m = Market.getMarket();
-//        m.createBuySell("amazon,1,sur,100,100,true");
-//        //m.addSellRequest(new BuySell(StockType.AMAZON.toString().toLowerCase(), 1, "sur", 100, 100, false));
-//        //m.addSellRequest(new BuySell(StockType.AMAZON.toString(),1,"sun",100, 100, false));
-//        //m.matchOrders();
-//       // m.updateStockValues();
-//       // m.evaluateCurrentMarketValue();;
-//        m.addStock("google",150,12);
-//        m.addStock("facebook",200,12);
-//
-//            User u1 =  m.returnUser(new Authentication("surag","surag"));
-//            User u2 =  m.returnUser(new Authentication("prateek","surag"));
-//            User u3 =  m.returnUser(new Authentication("nishant","surag"));
-//            m.addUser(u1);
-//            m.addUser(u2);
-//            m.addUser(u3);
-//            String reqStr = m.requestMarketUpdate(u1.getAuth().getUsername());
-//            System.out.println(reqStr);
-//            List<Stock> markStock = m.stringToMarket(reqStr);
-//            
-//            
-//            List<Stock> markStocks = m.stringToMarket(reqStr);
-//            for(Stock s: markStocks)
-//            {
-//                System.out.println("Stock Name: "+s.getStockName()+","+"Stock price: "+s.getUnitPrice());
-//            }
-//            
-//            
-//
-//            while (true){
-//                
-//            }
-//
-//    }
+    public static void main(String[] args) {
+        Market m = Market.getMarket();
+        m.createBuySell("amazon,1,sur,100,100,true");
+        //m.addSellRequest(new BuySell(StockType.AMAZON.toString().toLowerCase(), 1, "sur", 100, 100, false));
+        //m.addSellRequest(new BuySell(StockType.AMAZON.toString(),1,"sun",100, 100, false));
+        //m.matchOrders();
+       // m.updateStockValues();
+       // m.evaluateCurrentMarketValue();;
+        m.addStock("google",150,12);
+        m.addStock("facebook",200,12);
+
+            User u1 =  m.returnUser(new Authentication("surag","surag"));
+            User u2 =  m.returnUser(new Authentication("prateek","surag"));
+            User u3 =  m.returnUser(new Authentication("nishant","surag"));
+            m.addUser(u1);
+            m.addUser(u2);
+            m.addUser(u3);
+            String reqStr = m.requestMarketUpdate(u1.getAuth().getUsername());
+            System.out.println(reqStr);
+            List<Stock> markStock = m.stringToMarket(reqStr);
+
+
+            List<Stock> markStocks = m.stringToMarket(reqStr);
+            for(Stock s: markStocks)
+            {
+                System.out.println("Stock Name: "+s.getStockName()+","+"Stock price: "+s.getUnitPrice());
+            }
+
+
+
+            while (true){
+
+            }
+
+    }
 }
