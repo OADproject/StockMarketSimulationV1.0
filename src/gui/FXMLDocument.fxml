@@ -122,7 +122,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Pane fx:id="chartPane" prefHeight="542.0" prefWidth="806.0" style="-fx-background-color: #2b2b2b; -fx-border-color: white; -fx-border-width: 3;">
+                        <Pane fx:id="chartPane" prefHeight="540.0" prefWidth="806.0" style="-fx-background-color: #2b2b2b; -fx-border-color: white; -fx-border-width: 3;">
                            <children>
                               <Label id="errorMsg" fx:id="LoginError1" layoutX="374.0" layoutY="356.0" style="-fx-background-color: red;">
                                  <font>
