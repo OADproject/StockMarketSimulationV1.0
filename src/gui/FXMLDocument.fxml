@@ -13,10 +13,10 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="572.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLDocumentController">
    <children>
       <TabPane fx:id="mainTabPane" prefHeight="572.0" prefWidth="806.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab id="loginTab" fx:id="indexTab" text="Login/Logout">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+         <tabs>
+            <Tab id="loginTab" fx:id="indexTab" text="Login/Logout">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Pane prefHeight="540.0" prefWidth="806.0" style="-fx-background-color: #2b2b2b; -fx-border-color: white; -fx-border-width: 3;">
                            <children>
@@ -32,7 +32,7 @@
                               </Label>
                               <TextField id="usernameInput" fx:id="usernameInput" layoutX="374.0" layoutY="226.0" />
                               <Button fx:id="loginButton" layoutX="374.0" layoutY="292.0" mnemonicParsing="false" onAction="#validateLogin" text="Login" />
-                              <Button fx:id="logoutButton" layoutX="429.0" layoutY="292.0" mnemonicParsing="false" text="Logout" />
+                              <Button fx:id="logoutButton" layoutX="429.0" layoutY="292.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
                               <PasswordField id="passwordInput" fx:id="passwordInput" layoutX="374.0" layoutY="262.0" />
                               <Label layoutX="240.0" layoutY="108.0" text="Stock Market Admin Control Panel" textFill="RED">
                                  <font>
@@ -48,8 +48,8 @@
                         </Pane>
                      </children>
                   </AnchorPane>
-            </content>
-          </Tab>
+               </content>
+            </Tab>
             <Tab fx:id="userManagementTab" text="User Management">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -122,21 +122,20 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Pane fx:id="chartPane" prefHeight="542.0" prefWidth="806.0" style="-fx-background-color: #2b2b2b; -fx-border-color: white; -fx-border-width: 3;">
+                        <Pane fx:id="chartPane" prefHeight="540.0" prefWidth="806.0" style="-fx-background-color: #2b2b2b; -fx-border-color: white; -fx-border-width: 3;">
                            <children>
                               <Label id="errorMsg" fx:id="LoginError1" layoutX="374.0" layoutY="356.0" style="-fx-background-color: red;">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="chartUpdateButton" layoutX="21.0" layoutY="508.0" mnemonicParsing="false" onAction="#updateChart" text="UPDATE" />
                            </children>
                         </Pane>
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
-        </tabs>
+         </tabs>
       </TabPane>
    </children>
 </AnchorPane>
