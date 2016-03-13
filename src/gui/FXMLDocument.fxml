@@ -13,10 +13,10 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="572.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLDocumentController">
    <children>
       <TabPane fx:id="mainTabPane" prefHeight="572.0" prefWidth="806.0" tabClosingPolicy="UNAVAILABLE">
-         <tabs>
-            <Tab id="loginTab" fx:id="indexTab" text="Login/Logout">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+        <tabs>
+          <Tab id="loginTab" fx:id="indexTab" text="Login/Logout">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Pane prefHeight="540.0" prefWidth="806.0" style="-fx-background-color: #2b2b2b; -fx-border-color: white; -fx-border-width: 3;">
                            <children>
@@ -31,8 +31,8 @@
                                  </font>
                               </Label>
                               <TextField id="usernameInput" fx:id="usernameInput" layoutX="374.0" layoutY="226.0" />
-                              <Button fx:id="loginButton" layoutX="374.0" layoutY="292.0" mnemonicParsing="false" onAction="#validateLogin" text="Login" />
-                              <Button fx:id="logoutButton" layoutX="429.0" layoutY="292.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
+                              <Button id="loginButton" fx:id="loginButton" layoutX="374.0" layoutY="302.0" mnemonicParsing="false" onAction="#validateLogin" stylesheets="@button.css" text="Login" />
+                              <Button id="logoutButton" fx:id="logoutButton" layoutX="453.0" layoutY="302.0" mnemonicParsing="false" stylesheets="@button.css" text="Logout" />
                               <PasswordField id="passwordInput" fx:id="passwordInput" layoutX="374.0" layoutY="262.0" />
                               <Label layoutX="240.0" layoutY="108.0" text="Stock Market Admin Control Panel" textFill="RED">
                                  <font>
@@ -48,8 +48,8 @@
                         </Pane>
                      </children>
                   </AnchorPane>
-               </content>
-            </Tab>
+            </content>
+          </Tab>
             <Tab fx:id="userManagementTab" text="User Management">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -60,15 +60,15 @@
                               <TextField fx:id="usernameSearchField" layoutX="166.0" layoutY="52.0" />
                               <TextArea fx:id="userInfoTextArea" layoutX="52.0" layoutY="112.0" prefHeight="377.0" prefWidth="256.0" style="-fx-background-color: red;" stylesheets="@txtArea.css" />
                               <Label layoutX="52.0" layoutY="95.0" text="User Info:" textFill="#16f402" />
-                              <Button fx:id="editUsedInoBtn" layoutX="588.0" layoutY="198.0" mnemonicParsing="false" onAction="#editUsedInfo" text="Edit User Information" />
-                              <Button fx:id="viewUSerStock" layoutX="331.0" layoutY="112.0" mnemonicParsing="false" onAction="#viewUserStocks" text="View User Info" />
+                              <Button id="viewUserInfo" fx:id="editUsedInoBtn" layoutX="510.0" layoutY="196.0" mnemonicParsing="false" onAction="#editUsedInfo" prefHeight="33.0" prefWidth="186.0" stylesheets="@button.css" text="Edit User Information" />
+                              <Button id="viewUserInfo" fx:id="viewUSerStock" layoutX="331.0" layoutY="112.0" mnemonicParsing="false" onAction="#viewUserStocks" prefHeight="31.0" prefWidth="140.0" stylesheets="@button.css" text="View User Info" />
                               <Label layoutX="508.0" layoutY="116.0" text="Username:" textFill="#16f402" />
                               <Label layoutX="509.0" layoutY="139.0" text="Password:" textFill="#16f402" />
                               <Label layoutX="510.0" layoutY="164.0" text="Balance:" textFill="#16f402" />
                               <TextField fx:id="usernameEdit" layoutX="588.0" layoutY="112.0" />
                               <TextField fx:id="passwordEdit" layoutX="588.0" layoutY="135.0" />
                               <TextField fx:id="balanceEdit" layoutX="588.0" layoutY="160.0" />
-                              <Line endX="100.0" layoutX="459.0" layoutY="210.0" rotate="90.0" startX="-100.0" stroke="RED" />
+                              <Line endX="100.0" layoutX="489.0" layoutY="210.0" rotate="90.0" startX="-100.0" stroke="RED" />
                            </children>
                         </Pane>
                      </children>
@@ -82,18 +82,18 @@
                         <Pane prefHeight="540.0" prefWidth="806.0" style="-fx-background-color: #2b2b2b; -fx-border-color: white; -fx-border-width: 3;">
                            <children>
                               <TextArea fx:id="currentStockTextArea" layoutX="57.0" layoutY="56.0" prefHeight="175.0" prefWidth="678.0" style="-fx-background-color: red;" stylesheets="@txtArea.css" />
-                              <Button fx:id="viewCurentStockButton" layoutX="57.0" layoutY="259.0" mnemonicParsing="false" onAction="#viewCurrentStocks" text="View Current Stocks" />
+                              <Button id="viewUserInfo" fx:id="viewCurentStockButton" layoutX="57.0" layoutY="249.0" mnemonicParsing="false" onAction="#viewCurrentStocks" stylesheets="@button.css" text="View Current Stocks" />
                               <Label layoutX="57.0" layoutY="345.0" text="Stock Name:" textFill="#16f402" />
                               <Label layoutX="57.0" layoutY="369.0" text="Stock Price:" textFill="#16f402" />
                               <TextField fx:id="stockNameField" layoutX="137.0" layoutY="341.0" />
                               <TextField fx:id="stockPriceField" layoutX="137.0" layoutY="365.0" />
-                              <Button fx:id="addStockButton" layoutX="137.0" layoutY="425.0" mnemonicParsing="false" onAction="#addNewStock" text="Add New Stock" />
+                              <Button id="viewUserInfo" fx:id="addStockButton" layoutX="137.0" layoutY="425.0" mnemonicParsing="false" onAction="#addNewStock" stylesheets="@button.css" text="Add New Stock" />
                               <Label layoutX="57.0" layoutY="298.0" text="Add New Stock-:" textFill="#16f402">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="editCommitChanges" layoutX="242.0" layoutY="425.0" mnemonicParsing="false" onAction="#editStock" text="Edit Existing Stock" />
+                              <Button id="viewUserInfo" fx:id="editCommitChanges" layoutX="295.0" layoutY="425.0" mnemonicParsing="false" onAction="#editStock" stylesheets="@button.css" text="Edit Existing Stock" />
                               <Label layoutX="57.0" layoutY="39.0" text="Current Stock Info:" textFill="#16f402" />
                            </children>
                         </Pane>
@@ -110,9 +110,9 @@
                               <Pane layoutX="62.0" layoutY="42.0" prefHeight="215.0" prefWidth="692.0" style="-fx-background-color: black;" />
                               <TextArea fx:id="currentMarketStockPricesArea" layoutX="62.0" layoutY="42.0" prefHeight="215.0" prefWidth="692.0" style="-fx-background-color: red;" stylesheets="@txtArea.css" />
                               <Label layoutX="62.0" layoutY="25.0" text="Current Market Pricings:" textFill="#16f402" />
-                              <Button fx:id="viewMarketStatusButton" layoutX="62.0" layoutY="271.0" mnemonicParsing="false" text="View Market Status" />
-                              <Button fx:id="startMarketButton" layoutX="277.0" layoutY="407.0" mnemonicParsing="false" onAction="#startMarket" text="Start Market" />
-                              <Button fx:id="stopMarketButton" layoutX="378.0" layoutY="407.0" mnemonicParsing="false" onAction="#stopMarket" text="Stop Market" />
+                              <Button id="viewUserInfo" fx:id="viewMarketStatusButton" layoutX="62.0" layoutY="271.0" mnemonicParsing="false" stylesheets="@button.css" text="View Market Status" />
+                              <Button id="viewUserInfo" fx:id="startMarketButton" layoutX="277.0" layoutY="407.0" mnemonicParsing="false" onAction="#startMarket" stylesheets="@button.css" text="Start Market" />
+                              <Button id="viewUserInfo" fx:id="stopMarketButton" layoutX="403.0" layoutY="407.0" mnemonicParsing="false" onAction="#stopMarket" stylesheets="@button.css" text="Stop Market" />
                            </children></Pane>
                      </children>
                   </AnchorPane>
@@ -122,7 +122,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Pane fx:id="chartPane" prefHeight="540.0" prefWidth="806.0" style="-fx-background-color: #2b2b2b; -fx-border-color: white; -fx-border-width: 3;">
+                        <Pane fx:id="chartPane" prefHeight="542.0" prefWidth="806.0" style="-fx-background-color: #2b2b2b; -fx-border-color: white; -fx-border-width: 3;">
                            <children>
                               <Label id="errorMsg" fx:id="LoginError1" layoutX="374.0" layoutY="356.0" style="-fx-background-color: red;">
                                  <font>
@@ -135,7 +135,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-         </tabs>
+        </tabs>
       </TabPane>
    </children>
 </AnchorPane>
