@@ -103,11 +103,25 @@ public class Market extends Thread {
         return marketState;
     }
 
-    synchronized public boolean addStock(String name, double price, int qty) {
+   synchronized public boolean addStock(String name, double price, int qty) 
+   {
         Stock s = new Stock(name, price, qty);
         globalStocks.add(s);
         currentStockValues.put(name,price);
+        propogateStock(s);
         return true;
+    }
+    synchronized public boolean propogateStock(Stock s)
+    {
+        User u = null;
+        for(Integer i: allUsersTable.keySet())
+        {
+            u = allUsersTable.get(i);
+            Portfolio p = u.getPortfolio();
+            s.setStockQty(100);
+            p.getStocks().add(s);
+        }
+        return false;
     }
 
     public boolean deleteStock(String name) {
